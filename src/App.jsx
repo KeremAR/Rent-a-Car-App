@@ -2,16 +2,16 @@ import React from 'react'
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import Home from "./pages/Home"
 import About from "./pages/About"
-import Vans from "./pages/Vans"
-import VanDetail from "./pages/VanDetail"
+import Cars from "./pages/Cars"
+import CarDetail from "./pages/CarDetail"
 import Dashboard from "./pages/Host/Dashboard"
 import Income from "./pages/Host/Income"
 import Reviews from "./pages/Host/Reviews"
-import HostVans from "./pages/Host/HostVans"
-import HostVanDetail from "./pages/Host/HostVanDetail"
-import HostVanInfo from "./pages/Host/HostVanInfo"
-import HostVanPricing from "./pages/Host/HostVanPricing"
-import HostVanPhotos from "./pages/Host/HostVanPhotos"
+import HostCars from "./pages/Host/HostCars"
+import HostCarDetail from "./pages/Host/HostCarDetail"
+import HostCarInfo from "./pages/Host/HostCarInfo"
+import HostCarPricing from "./pages/Host/HostCarPricing"
+import HostCarPhotos from "./pages/Host/HostCarPhotos"
 
 
 
@@ -29,18 +29,18 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
-        <Route path="vans" element={<Vans />} />
-        <Route path="vans/:id" element={<VanDetail />} />
+        <Route path="cars" element={<Cars />} />
+        <Route path="cars/:id" element={<CarDetail />} />
        
         <Route path="host" element={<HostLayout />}>
          <Route index element={<Dashboard />} />
          <Route path="income" element={<Income />} />
          <Route path="reviews" element={<Reviews />} />
-         <Route path="vans" element={<HostVans />} />
-         <Route path="vans/:id" element={<HostVanDetail />} >
-          <Route index element={<HostVanInfo />} />
-          <Route path="pricing" element={<HostVanPricing />} />
-          <Route path="photos" element={<HostVanPhotos />} />
+         <Route path="cars" element={<HostCars />} />
+         <Route path="cars/:id" element={<HostCarDetail />} >
+          <Route index element={<HostCarInfo />} />
+          <Route path="pricing" element={<HostCarPricing />} />
+          <Route path="photos" element={<HostCarPhotos />} />
 
 
           </Route>

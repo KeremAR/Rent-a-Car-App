@@ -5,7 +5,7 @@ export default function Header(){
   
     return(
       <header>
-      <Link className="site-logo" to="/">#VanLife</Link>
+      <Link className="site-logo" to="/">Rent a Car</Link>
       <nav>
           <NavLink 
               to="/host"
@@ -20,10 +20,10 @@ export default function Header(){
               About
           </NavLink>
           <NavLink 
-              to="/vans"
+              to="/cars"
               className={({isActive}) => isActive ? "active-link" : null}
           >
-              Vans
+              Cars
           </NavLink>
       </nav>
   </header>
