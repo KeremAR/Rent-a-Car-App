@@ -13,6 +13,11 @@ export default function carDetail() {
     },[params.id])
     return (
     <div className="car-detail-container">
+        <Link
+            to=".."
+            relative = "path" // relative to path not route otherwise ../cars
+            className="back-button"
+        >&larr; <span>Back to all cars</span></Link>
     {car ? (
         <div className="car-detail">
             <img src={car.imageUrl} />

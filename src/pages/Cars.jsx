@@ -21,7 +21,7 @@ export default function cars() {
 
     const carElements = displayedCars.map(car => (
         <div key={car.id} className="car-tile">
-        <Link to= {`/cars/${car.id}`} 
+        <Link to= {car.id} 
         aria-label={`View details for ${car.name}, 
         priced at $${car.price} per day`}
         >
@@ -34,33 +34,51 @@ export default function cars() {
         </Link>
     </div>
     ))
+    function handleFilterChange(key, value) {
+        setSearchParams(prevParams => {
+            if (value === null) {
+                prevParams.delete(key)
+            } else {
+                prevParams.set(key, value)
+            }
+            return prevParams
+        })
+    }
 
     return (
         <div className="car-list-container">
             <h1>Explore our car options</h1>
             <div className="car-list-filter-buttons">
-                <Link 
-                    to="?type=simple"
-                    className="car-type simple"
-                >Simple</Link>
-                <Link 
-                    to="?type=luxury"
-                    className="car-type luxury"
-                >Luxury</Link>
-                <Link 
-                    to="?type=rugged"
-                    className="car-type rugged"
-                >Rugged</Link>
-                <Link 
-                    to="."
-                    className="car-type clear-filters"
-                >Clear filter</Link>
-            
-            </div>
-        <div className="car-list">
-            {carElements}
-        </div>
-    </div>
+                <button
+                    onClick={() => handleFilterChange("type", "simple")}
+                    className={
+                        `car-type simple ${typeFilter === "simple" ? "selected" : ""}`
+                    }
+                >Simple</button>
+                <button
+                    onClick={() => handleFilterChange("type", "luxury")}
+                    className={
+                        `car-type luxury ${typeFilter === "luxury" ? "selected" : ""}`
+                    }
+                >Luxury</button>
+                <button
+                    onClick={() => handleFilterChange("type", "rugged")}
+                    className={
+                        `car-type rugged ${typeFilter === "rugged" ? "selected" : ""}`
+                    }
+                >Rugged</button>
 
-        )
+                {typeFilter ? (
+                    <button
+                        onClick={() => handleFilterChange("type", null)}
+                        className="car-type clear-filters"
+                    >Clear filter</button>
+                ) : null}
+
+            </div>
+            <div className="car-list">
+                {carElements}
+            </div>
+        </div>
+    )
 }

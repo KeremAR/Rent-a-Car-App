@@ -12,7 +12,7 @@ export default function HostCars() {
 
     const hostCarsEls = cars.map(car => (
         <Link
-            to={`/host/cars/${car.id}`}
+            to={car.id}
             key={car.id}
             className="host-car-link-wrapper"
         >
