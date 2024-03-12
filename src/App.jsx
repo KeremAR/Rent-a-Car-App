@@ -12,6 +12,7 @@ import HostCarDetail from "./pages/Host/HostCarDetail"
 import HostCarInfo from "./pages/Host/HostCarInfo"
 import HostCarPricing from "./pages/Host/HostCarPricing"
 import HostCarPhotos from "./pages/Host/HostCarPhotos"
+import NotFound from "./pages/NotFound"
 
 
 
@@ -45,6 +46,7 @@ function App() {
 
           </Route>
          </Route>
+         <Route path ="*" element ={<NotFound />}/>
         </Route>
       </Routes>
     </BrowserRouter>

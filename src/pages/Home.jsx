@@ -9,4 +9,4 @@ export default function Home() {
             <Link to="cars">Find your car</Link>
         </div>
     )
-};
+}
