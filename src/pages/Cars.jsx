@@ -1,18 +1,33 @@
 import React from "react"
 import { Link, useSearchParams } from "react-router-dom"
+import { getCars } from "/src/api"
 
 
 export default function cars() {
     const[searchParams, setSearchParams] = useSearchParams()
     const[cars, setCars] = React.useState([])
+    const[loading, setLoading] = React.useState(false)
+    const[error, setError] = React.useState(null)
+
 
     const typeFilter = searchParams.get("type")
     console.log(searchParams.toString())
 
     React.useEffect(() => {
-        fetch("/api/cars")
-        .then(res => res.json())
-        .then(data => setCars(data.cars))
+        async function loadCars() {
+            setLoading(true)
+            try {
+                const data = await getCars()
+                setCars(data)
+
+            } catch (err) {
+                setError(err)
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        loadCars()
     }, [])
 
     const displayedCars = typeFilter
@@ -21,7 +36,8 @@ export default function cars() {
 
     const carElements = displayedCars.map(car => (
         <div key={car.id} className="car-tile">
-        <Link to= {car.id} state ={{search: `?${searchParams.toString()}`,
+        <Link to= {car.id} state ={{
+        search: `?${searchParams.toString()}`,
         type : typeFilter
     }}
         aria-label={`View details for ${car.name}, 
@@ -47,6 +63,12 @@ export default function cars() {
         })
     }
 
+    if(loading){
+        return <h1>Loading....</h1>
+    }
+    if(error){
+        return <h1>there was an error: {error.message}</h1>
+    }
     return (
         <div className="car-list-container">
             <h1>Explore our car options</h1>
