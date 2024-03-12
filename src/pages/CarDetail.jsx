@@ -15,7 +15,7 @@ export default function carDetail() {
     },[params.id])
 
     const search = location.state?.search || ""
-    const type = location.state?.type || ""
+    const type = location.state?.type || "all"
 
 
     return (

@@ -3,7 +3,7 @@ import { Link, useSearchParams } from "react-router-dom"
 import { getCars } from "/src/api"
 
 
-export default function cars() {
+export default function Cars() {
     const[searchParams, setSearchParams] = useSearchParams()
     const[cars, setCars] = React.useState([])
     const[loading, setLoading] = React.useState(false)
@@ -11,7 +11,6 @@ export default function cars() {
 
 
     const typeFilter = searchParams.get("type")
-    console.log(searchParams.toString())
 
     React.useEffect(() => {
         async function loadCars() {
@@ -64,10 +63,10 @@ export default function cars() {
     }
 
     if(loading){
-        return <h1>Loading....</h1>
+        return <h1 aria-live = "polite">Loading....</h1>
     }
     if(error){
-        return <h1>there was an error: {error.message}</h1>
+        return <h1 aria-live = "polite">there was an error: {error.message}</h1>
     }
     return (
         <div className="car-list-container">
