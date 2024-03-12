@@ -7,7 +7,7 @@ export default function cars() {
     const[cars, setCars] = React.useState([])
 
     const typeFilter = searchParams.get("type")
-    console.log(typeFilter)
+    console.log(searchParams.toString())
 
     React.useEffect(() => {
         fetch("/api/cars")
@@ -21,7 +21,9 @@ export default function cars() {
 
     const carElements = displayedCars.map(car => (
         <div key={car.id} className="car-tile">
-        <Link to= {car.id} 
+        <Link to= {car.id} state ={{search: `?${searchParams.toString()}`,
+        type : typeFilter
+    }}
         aria-label={`View details for ${car.name}, 
         priced at $${car.price} per day`}
         >

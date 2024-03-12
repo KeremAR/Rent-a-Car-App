@@ -1,9 +1,11 @@
 import React from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link, useLocation } from "react-router-dom"
 
 
 export default function carDetail() {
     const params = useParams()
+    const location = useLocation()
+    console.log(location)
     const [car, setCar] = React.useState(null)
 
     React.useEffect(() => {
@@ -11,13 +13,18 @@ export default function carDetail() {
         .then(res => res.json())
         .then(data => setCar(data.cars))
     },[params.id])
+
+    const search = location.state?.search || ""
+    const type = location.state?.type || ""
+
+
     return (
     <div className="car-detail-container">
         <Link
-            to=".."
+            to={`..${search}`}
             relative = "path" // relative to path not route otherwise ../cars
             className="back-button"
-        >&larr; <span>Back to all cars</span></Link>
+        >&larr; <span>Back to {type} cars</span></Link>
     {car ? (
         <div className="car-detail">
             <img src={car.imageUrl} />
