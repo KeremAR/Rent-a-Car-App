@@ -14,6 +14,7 @@ import HostCarInfo from "./pages/Host/HostCarInfo"
 import HostCarPricing from "./pages/Host/HostCarPricing"
 import HostCarPhotos from "./pages/Host/HostCarPhotos"
 import NotFound from "./pages/NotFound"
+import AuthRequired from "./components/AuthRequired"
 
 
 
@@ -37,7 +38,7 @@ function App() {
             path="login"
             element={<Login />}
           />
-       
+        <Route element ={<AuthRequired />}>
         <Route path="host" element={<HostLayout />}>
          <Route index element={<Dashboard />} />
          <Route path="income" element={<Income />} />
@@ -47,7 +48,7 @@ function App() {
           <Route index element={<HostCarInfo />} />
           <Route path="pricing" element={<HostCarPricing />} />
           <Route path="photos" element={<HostCarPhotos />} />
-
+          </Route>
 
           </Route>
          </Route>
