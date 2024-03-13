@@ -4,6 +4,7 @@ import Home from "./pages/Home"
 import About from "./pages/About"
 import Cars from "./pages/Cars"
 import CarDetail from "./pages/CarDetail"
+import Login from "/src/Login"
 import Dashboard from "./pages/Host/Dashboard"
 import Income from "./pages/Host/Income"
 import Reviews from "./pages/Host/Reviews"
@@ -32,6 +33,10 @@ function App() {
         <Route path="about" element={<About />} />
         <Route path="cars" element={<Cars />} />
         <Route path="cars/:id" element={<CarDetail />} />
+        <Route
+            path="login"
+            element={<Login />}
+          />
        
         <Route path="host" element={<HostLayout />}>
          <Route index element={<Dashboard />} />

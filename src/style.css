@@ -9,6 +9,11 @@ html, body {
     font-family: "Inter", sans-serif;
 }
 
+a {
+    text-decoration: unset;
+    color: unset;
+}
+
 body::-webkit-scrollbar {
   display: none;
 }
@@ -51,6 +56,10 @@ header a:hover {
     text-decoration: underline;
 }
 
+nav {
+    display: flex;
+}
+
 main {
     margin-bottom: 84px;
 }
@@ -84,7 +93,6 @@ footer {
     display: block;
     color: black;
     text-decoration: none;
-    margin-top: 60px;
     margin-left: 26px;
 }
 
@@ -94,6 +102,16 @@ footer {
 
 .link-button:hover {
     transform: translate(1px, 1px);
+}
+
+header .login-icon {
+    height: 18px;
+    width: 18px;
+}
+
+header .login-link {
+    display: inline-flex;
+    align-items: center;
 }
 
 /*** HOME PAGE ***/
@@ -179,12 +197,21 @@ footer {
 }
 
 
-/*** car PAGES ***/
-.car-list-container {
+/*** VAN PAGES ***/
+.van-list-container {
     padding-inline: 23px
 }
 
-.car-list {
+.van-list-filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.van-list-filter-buttons > a {
+    margin-right: 15px;
+}
+
+.van-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
@@ -192,22 +219,22 @@ footer {
     margin-top: 57px;
 }
 
-.car-tile a {
+.van-tile a {
     color: #161616;
     text-decoration: none;    
 }
 
-.car-tile img {
+.van-tile img {
     max-width: 100%;
     border-radius: 5px;
 }
 
-.car-list-container button {
+.van-list-container button {
     margin-right: 20px;
     cursor: pointer;
 }
 
-.car-type {
+.van-type {
     height: 34px;
     padding: 6px 26px;
     font-style: normal;
@@ -219,31 +246,31 @@ footer {
     transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.car-type:hover {
+.van-type:hover {
     color: #FFEAD0;
 }
 
-.car-type:focus {
+.van-type:focus {
     outline: none;
 }
 
-.car-type.selected {
+.van-type.selected {
     color: #FFEAD0;
 }
 
-.car-type.simple:hover, .car-type.simple.selected {
+.van-type.simple:hover, .van-type.simple.selected {
     background-color: #E17654;
 }
 
-.car-type.rugged:hover, .car-type.rugged.selected {
+.van-type.rugged:hover, .van-type.rugged.selected {
     background-color: #115E59;
 }
 
-.car-type.luxury:hover, .car-type.luxury.selected {
+.van-type.luxury:hover, .van-type.luxury.selected {
     background-color: #161616;
 }
 
-.car-type.clear-filters {
+.van-type.clear-filters {
     margin-left: -20px;
     height: 34px;
     padding: 6px 26px;
@@ -256,58 +283,58 @@ footer {
     color: #4D4D4D;
 }
 
-i[class*='car-type-'] {
+i[class*='van-type-'] {
     padding: 7px 14px;
 }
 
-.car-detail-container {
-    padding: 27px;
+.van-detail-container {
+    padding-inline: 27px;
 }
 
-.car-detail-container .back-button {
+.van-detail-container .back-button {
     color: black;
     text-decoration: none;
 }
 
-.car-detail-container .back-button:visited {
+.van-detail-container .back-button:visited {
     
 }
 
-.car-detail-container .back-button span {
+.van-detail-container .back-button span {
     text-decoration: underline;
 }
 
-.car-detail {
+.van-detail {
     display: flex;
     flex-direction: column;
     color: #161616;
 }
 
-.car-detail img {
+.van-detail img {
     border-radius: 5px;
     margin-block: 47px;
 }
 
-.car-detail h2 {
+.van-detail h2 {
     font-size: 2rem;
     margin-bottom: 10px;
 }
 
-.car-detail > i {
+.van-detail > i {
     align-self: flex-start;
 }
 
-.car-detail .car-price {
+.van-detail .van-price {
     font-size: 1.25rem;
     margin-bottom: 10px;
 }
 
-.car-detail .car-price span {
+.van-detail .van-price span {
     font-weight: 700;
     font-size: 1.5rem;
 }
 
-.car-detail .link-button {
+.van-detail .link-button {
     background-color: #FF8C38;
     color: white;
     font-size: 1.125rem;
@@ -315,6 +342,7 @@ i[class*='car-type-'] {
 
 .host-nav {
     display: flex;
+    margin-bottom: 30px;
 }
 
 .host-nav a {
@@ -330,20 +358,20 @@ i[class*='car-type-'] {
     font-weight: 600;
 }
 
-.host-car-link-wrapper {
+.host-van-link-wrapper {
     color: unset;
     text-decoration: unset;
 }
 
-.host-cars-list {
+.host-vans-list {
     padding-inline: 26px;
 }
 
-.host-cars-title {
+.host-vans-title {
     padding-inline: 26px;
 }
 
-.host-car-single {
+.host-van-single {
     display: flex;
     align-items: center;
     background-color: white;
@@ -352,64 +380,64 @@ i[class*='car-type-'] {
     padding-left: 24px;
 }
 
-.host-car-single > img {
+.host-van-single > img {
     height: 70px;
     border-radius: 5px;
     margin-right: 17px;
 }
 
-.host-car-info h3 {
+.host-van-info h3 {
     font-size: 20px;
     font-weight: 600;
     margin-block: 10px;
 }
 
-.host-car-info p {
+.host-van-info p {
     margin-block: 10px;
 }
 
-.host-car-detail-layout-container {
+.host-van-detail-layout-container {
     background-color: white;
     padding: 24px;
     margin: 30px 26px;
 }
 
-.host-car-detail {
+.host-van-detail {
     display: flex;
     align-items: center;
 }
 
-.host-car-detail > img {
+.host-van-detail > img {
     height: 160px;
     border-radius: 5px;
     margin-right: 20px;
 }
 
-.host-car-detail-info-text > h3 {
+.host-van-detail-info-text > h3 {
     margin-top: 24px;
     margin-bottom: 5px;
     font-size: 26px;
     font-weight: 700;
 }
 
-.host-car-detail-info-text > h4 {
+.host-van-detail-info-text > h4 {
     font-size: 20px;
     margin-block: 0;
 }
 
-.host-car-detail-nav {
+.host-van-detail-nav {
     display: flex;
     margin-block: 25px;
 }
 
-.host-car-detail-nav a {
+.host-van-detail-nav a {
     text-decoration: none;
     color: #4D4D4D;
     font-weight: 500;
     padding: 5px 20px;
 }
 
-.host-car-detail-nav a:first-of-type {
+.host-van-detail-nav a:first-of-type {
     text-decoration: none;
     color: #4D4D4D;
     font-weight: 500;
@@ -417,34 +445,36 @@ i[class*='car-type-'] {
     margin-left: -15px;
 }
 
-.host-car-detail-nav a:hover {
+.host-van-detail-nav a:hover {
     color: #161616;
     text-decoration: underline;
     font-weight: 700;
 }
 
-.host-car-detail-info > h4 {
+.host-van-detail-info > h4 {
     font-weight: 700;
     font-size: 14px;
     line-height: 21px;
 }
-.host-car-detail-info > h4 > span {
+.host-van-detail-info > h4 > span {
     font-weight: 500;
 }
-.host-car-price {
+
+.host-van-price {
     font-size: 24px;
     font-weight: 500;
 }
 
-.host-car-price > span {
+.host-van-price > span {
     font-size: 16px;
     color: #4D4D4D;
 }
 
-.host-car-detail-image {
+.host-van-detail-image {
     height: 100px;
     border-radius: 5px;
 }
+
 .not-found-container {
     padding-inline: 26px;
 }
@@ -453,4 +483,50 @@ i[class*='car-type-'] {
     width: 100%;
     background-color: #161616;
     color: white;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-inline: 27px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;    
+}
+
+.login-form > input {
+    border: 1px solid rgba(209, 213, 219);
+    height: 40px;
+    text-indent: 10px;
+    font-family: "Inter", sans-serif;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    font-weight: 400;
+}
+
+.login-form > input:focus {
+    outline: none;
+}
+
+.login-form > input:first-of-type {
+    border-radius: 6px 6px 0px 0px;
+}
+
+.login-form > input:last-of-type {
+    border-radius: 0px 0px 6px 6px;
+    border-top: none;
+}
+
+.login-form > button {
+    background-color: #FF8C38;
+    border: none;
+    border-radius: 6px;
+    height: 55px;
+    margin-top: 22px;
+    color: white;
+    font-family: "Inter", sans-serif;
 }
