@@ -1,13 +1,26 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import {getHostCars} from "/src/api"
+
 
 export default function HostCars() {
     const [cars, setCars] = React.useState([])
+    const [loading, setLoading] = React.useState(false)
+    const [error, setError] = React.useState(null)
 
     React.useEffect(() => {
-        fetch("/api/host/cars")
-            .then(res => res.json())
-            .then(data => setCars(data.cars))
+        async function loadCars() {
+            setLoading(true)
+            try {
+                const data = await getHostCars()
+                setCars(data)
+            } catch (err) {
+                setError(err)
+            } finally {
+                setLoading(false)
+            }
+        }
+        loadCars()
     }, [])
 
     const hostCarsEls = cars.map(car => (

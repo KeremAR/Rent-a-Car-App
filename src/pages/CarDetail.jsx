@@ -1,18 +1,29 @@
 import React from "react"
 import { useParams, Link, useLocation } from "react-router-dom"
+import { getCars } from "/src/api"
 
 
 export default function carDetail() {
-    const params = useParams()
+    const {id} = useParams()
     const location = useLocation()
-    console.log(location)
     const [car, setCar] = React.useState(null)
+    const [loading, setLoading] = React.useState(false)
+    const [error, setError] = React.useState(null)
 
     React.useEffect(() => {
-        fetch(`/api/cars/${params.id}`)
-        .then(res => res.json())
-        .then(data => setCar(data.cars))
-    },[params.id])
+        async function loadCars() {
+            setLoading(true)
+            try {
+                const data = await getCars(id)
+                setCar(data)
+            } catch (err) {
+                setError(err)
+            } finally {
+                setLoading(false)
+            }
+        }
+        loadCars()
+    }, [id])
 
     const search = location.state?.search || ""
     const type = location.state?.type || "all"

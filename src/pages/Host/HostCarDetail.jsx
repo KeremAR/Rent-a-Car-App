@@ -1,8 +1,12 @@
 import React from "react"
 import {useParams, Link, Outlet, NavLink} from "react-router-dom"
+import { getHostCars } from "/src/api"
+
 export default function HostCarDetail() {
     const { id } = useParams()
     const [currentCar, setCurrentCar] = React.useState(null)
+    const [loading, setLoading] = React.useState(false)
+    const [error, setError] = React.useState(null)
 
     const activeStyles = {
         fontWeight: "bold",
@@ -11,11 +15,20 @@ export default function HostCarDetail() {
     }
 
     React.useEffect(() => {
-        fetch(`/api/host/cars/${id}`)
-            .then(res => res.json())
-            .then(data => setCurrentCar(data.cars ))
-    }, [])
+        async function loadCars() {
+            setLoading(true)
+            try {
+                const data = await getHostCars(id)
+                setCurrentCar(data)
+            } catch (err) {
+                setError(err)
+            } finally {
+                setLoading(false)
+            }
+        }
 
+        loadCars()
+    }, [id])
     if (!currentCar) {
         return <h1>Loading...</h1>
     }
