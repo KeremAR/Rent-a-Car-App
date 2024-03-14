@@ -530,6 +530,6 @@ i[class*='car-type-'] {
     color: white;
     font-family: "Inter", sans-serif;
 }
-.login-first{
+.login-error{
     color: red;
 }
