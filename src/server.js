@@ -5,8 +5,7 @@ createServer({
     models: {
         cars: Model,
         users: Model
-
-    },
+},
 
     seeds(server) {
         server.create("car", { id: "1", name: "Modest Explorer", price: 60, description: "The Modest Explorer is a van designed to get you out of the house and into nature. This beauty is equipped with solar panels, a composting toilet, a water tank and kitchenette. The idea is that you can pack up your home and escape for a weekend or even longer!", imageUrl: "https://assets.scrimba.com/advanced-react/react-router/modest-explorer.png", type: "simple", hostId: "123" })
@@ -17,8 +16,7 @@ createServer({
         server.create("car", { id: "6", name: "Green Wonder", price: 70, description: "With this van, you can take your travel life to the next level. The Green Wonder is a sustainable vehicle that's perfect for people who are looking for a stylish, eco-friendly mode of transport that can go anywhere.", imageUrl: "https://assets.scrimba.com/advanced-react/react-router/green-wonder.png", type: "rugged", hostId: "123" })
         
         server.create("user", { id: "123", email: "kerem@ar.com", password: "a123", name: "kerem" })
-
-    },
+},
 
     routes() {
         this.namespace = "api"

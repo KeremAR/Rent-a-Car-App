@@ -49,7 +49,6 @@ function App() {
           <Route path="pricing" element={<HostCarPricing />} />
           <Route path="photos" element={<HostCarPhotos />} />
           </Route>
-
           </Route>
          </Route>
          <Route path ="*" element ={<NotFound />}/>
