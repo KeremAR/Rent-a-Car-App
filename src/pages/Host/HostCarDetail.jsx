@@ -1,6 +1,6 @@
 import React from "react"
 import {useParams, Link, Outlet, NavLink} from "react-router-dom"
-import { getHostCars } from "/src/api"
+import { getCar } from "/src/api"
 
 export default function HostCarDetail() {
     const { id } = useParams()
@@ -18,7 +18,7 @@ export default function HostCarDetail() {
         async function loadCars() {
             setLoading(true)
             try {
-                const data = await getHostCars(id)
+                const data = await getCar(id)
                 setCurrentCar(data)
             } catch (err) {
                 setError(err)
@@ -29,6 +29,7 @@ export default function HostCarDetail() {
 
         loadCars()
     }, [id])
+    
     if (!currentCar) {
         return <h1>Loading...</h1>
     }

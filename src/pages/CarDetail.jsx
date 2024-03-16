@@ -1,6 +1,6 @@
 import React from "react"
 import { useParams, Link, useLocation } from "react-router-dom"
-import { getCars } from "/src/api"
+import { getCar } from "/src/api"
 
 
 export default function carDetail() {
@@ -14,7 +14,7 @@ export default function carDetail() {
         async function loadCars() {
             setLoading(true)
             try {
-                const data = await getCars(id)
+                const data = await getCar(id)
                 setCar(data)
             } catch (err) {
                 setError(err)
